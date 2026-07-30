@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ai-lit-agent"
+version = "0.1.0"
+description = "A starter agent for compiling and summarizing academic literature."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi>=0.111",
+    "pypdf>=5.0",
+    "python-multipart>=0.0.9",
+    "uvicorn[standard]>=0.30",
+]
+
+[project.scripts]
+lit-agent = "ai_lit_agent.cli:main"
+lit-agent-app = "ai_lit_agent.web:main"
+lit-agent-run-due = "ai_lit_agent.scheduler:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+ai_lit_agent = ["static/*.html", "static/*.css", "static/*.js"]
